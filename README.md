@@ -13,6 +13,10 @@ RunDeck is cross-platform open source software that helps you automate ad-hoc an
 4. Email support
 5. [Active Directory](https://runops.wordpress.com/2015/11/20/configure-rundeck-to-use-active-directory-authentication/) support
 
+## Plugins Included
+1. [Ansible Plugin](https://github.com/Batix/rundeck-ansible-plugin/releases) 
+2. [Slack Webhook Plugin](https://github.com/higanworks/rundeck-slack-incoming-webhook-plugin/releases/tag/v0.6.dev)
+
 ## How to use
 
 ### Clone the repo
