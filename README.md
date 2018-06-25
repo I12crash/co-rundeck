@@ -1,5 +1,9 @@
-rundeck
-==============
+Rundeck
+=======
+
+## What is Rundeck?
+
+RunDeck is cross-platform open source software that helps you automate ad-hoc and routine procedures in data center or cloud environments. RunDeck allows you to run tasks on any number of nodes from a web-based or command-line interface. RunDeck also includes other features that make it easy to scale up your scripting efforts including: access control, workflow building, scheduling, logging, and integration with external sources for node and option data.
 
 This repository contains the source for the [Rundeck](http://rundeck.org/) [docker](https://docker.io) image.
 
@@ -14,24 +18,32 @@ This repository contains the source for the [Rundeck](http://rundeck.org/) [dock
 1. As always, update passwords for pre-installed accounts
 1. I sometimes get connection reset by peer errors when building the Docker image from the Rundeck download URL.  Trying again usually works.
 
+## How to use
 
-# Automated build
-
-```
-docker pull jordan/rundeck
-```
-
-# Usage
-Start a new container and bind to host's port 4440
+### Clone the repo
 
 ```
-sudo docker run -p 4440:4440 -e EXTERNAL_SERVER_URL=http://MY.HOSTNAME.COM:4440 --name rundeck -t jordan/rundeck:latest
+git clone https://github.com/I12crash/co-rundeck
+```
+
+Make sure you change your current folder to Rundeck's project folder
+
+### Build your Rundeck image
+
+```
+./build.sh
+```
+
+### Create your new rundeck container
+
+```
+sudo docker run -p 4440:4440 -e EXTERNAL_SERVER_URL=http://MY.HOSTNAME.COM:4440 --name rundeck -t co-rundeck:latest
 ```
 
 # SSL
 Start a new container, bind to host's port 4443, and enable SSL.   Note: Make sure to update /etc/rundeck/ssl/keystore and /etc/rundeck/ssl/truststore for Production systems as the default certificate is self-signed. Set KEYSTORE_PASS & TRUSTSTORE_PASS to the passwords of those files. Both files can be volume mounted.
 ```
-sudo docker run -p 4443:4443 -e EXTERNAL_SERVER_URL=https://MY.HOSTNAME.COM:4443 -e RUNDECK_WITH_SSL=true --name rundeck -t jordan/rundeck:latest
+sudo docker run -p 4443:4443 -e EXTERNAL_SERVER_URL=https://MY.HOSTNAME.COM:4443 -e RUNDECK_WITH_SSL=true --name rundeck -t co-rundeck:latest
 ```
 
 # Rundeck plugins
@@ -77,8 +89,6 @@ SMTP_USERNAME - The SMTP server username to use for email notifications if authe
 SMTP_PASSWORD - The SMTP server password to use for email notifications if authentication is required
 
 SMTP_DEFAULT_FROM - The from address to use for email notifications.
-
-DEBIAN_SYS_MAINT_PASSWORD - No longer used as of Debian Stretch
 
 NO_LOCAL_MYSQL - false (default).  Set to true if using an external MySQL container or instance.  Make sure to set DATABASE_URL and RUNDECK_PASSWORD (used for JDBC connection to MySQL).  Further details for setting up MYSQL: http://rundeck.org/docs/administration/setting-up-an-rdb-datasource.html
 
