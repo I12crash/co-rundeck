@@ -3,7 +3,7 @@
 
 FROM debian:stretch
 
-MAINTAINER Jordan Jethwa
+MAINTAINER Robert Foster
 
 ENV SERVER_URL=https://localhost:4443 \
     RUNDECK_STORAGE_PROVIDER=file \
